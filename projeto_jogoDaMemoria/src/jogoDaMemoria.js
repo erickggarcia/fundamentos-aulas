@@ -6,7 +6,7 @@ class JogoDaMemoria {
         this.tela = tela
         this.util = util
 
-        this.iconePadrao = './imagens/padrao.png'
+        this.iconePadrao = './imagens/Padrao.png'
         this.heroisIniciais = [
             //Caminho sempre relativo ao index.html
             {img: './imagens/Batman.png', nome: 'Batman'},
