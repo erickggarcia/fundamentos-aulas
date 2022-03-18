@@ -5,6 +5,7 @@ class JogoDaMemoria {
     constructor({tela}) {
         this.tela = tela
 
+        this.iconePadrao = './imagens/Padrao.png'
         this.heroisIniciais = [
             //Caminho sempre relativo ao index.html
             {img: './imagens/Batman.png', name: 'Batman'},
@@ -13,7 +14,6 @@ class JogoDaMemoria {
             {img: './imagens/MulherMaravilha.png', name: 'MulherMaravilha'}
         ]
 
-        this.iconePadrao = './imagens/padrao.png'
         this.heroisEscondidos = []
     }
     //para usar o this, não podemos usar static!
