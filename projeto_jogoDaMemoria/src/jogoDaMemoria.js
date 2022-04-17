@@ -33,17 +33,17 @@ class JogoDaMemoria {
         const copias = this.heroisIniciais
         //duplicar os itens
         .concat(this.heroisIniciais)
-        //entrar em cada idem e criar um id aleatorio
+        //entrar em cada item e criar um id aleatorio
         .map(item => {
             return Object.assign({}, item, {id: Math.random() / 0.5})
         })
-        // ordenar
+        //ordenar
         .sort(() => Math.random() - 0.5)
         this.tela.atualizarImagens(copias)
         this.tela.exibirCarregando()
 
         const idDoIntervalo = this.tela.iniciarContador()
-        //vamos esperar 3 segundo para atualizar a tela
+        //vamos esperar 3 segundos para atualizar a tela
         await this.util.timeout(3000)
         this.tela.limparContador(idDoIntervalo)
         this.esconderHerois(copias)
@@ -56,7 +56,7 @@ class JogoDaMemoria {
         //vamos trocar a imagem de todos os herois existentes pelo icone padrao
         //Como fizemos no construtor, vamos extrair somente o necessário
         //usando a sintaxe({chave: 1}) estamos falando que vamos retornar o que estiver dentro dos parenteses
-        //quando não usamos: (exemplo do id), o JS entende que o nome é o mesmo do valor. Ex. id: id, vida id,
+        //quando não usamos: (exemplo do id), o JS entende que o nome é o mesmo do valor. Ex. id: id, nome:nome
         const heroisOcultos = herois.map(({nome, id}) => ({
             id,
             nome,
@@ -78,7 +78,7 @@ class JogoDaMemoria {
 
     verificarSelecao(id, nome) {
         const item = {id, nome}
-        //va,ps verificar a quantidade de herois selecionados e tomar ação se escolheu certo ou errado
+        //vamos verificar a quantidade de herois selecionados e tomar ação se escolheu certo ou errado
         const heroisSelecionados = this.heroisSelecionados.length
         switch(heroisSelecionados) {
             case 0:
@@ -86,20 +86,20 @@ class JogoDaMemoria {
                 this.heroisSelecionados.push(item)
                 break;
             case 1:
-                // se a quantidade de escolhidos for 1, significa que o usuário só pode escolher mais um 
+                //se a quantidade de escolhidos for 1, significa que o usuário só pode escolher mais um 
                 //vamos obter o primeiro item da lista
                 const [opcao1] = this.heroisSelecionados
                 //zerar itens para nao selecionar mais de dois
                 this.heroisSelecionados = []
                 //conferimos se os nomes e ids batem conforme o esperado
                 if(opcao1.nome === item.nome && 
-                    //aqui verificamos se são ids diferentes para o usuário nao clicar duas vezes no mesmo
+                //aqui verificamos se são ids diferentes para o usuário nao clicar duas vezes no mesmo
                 opcao1.id !== item.id
                 ) {
                     this.exibirHerois(item.nome)
-                    //como o padrao e true, nao precisa passar nada
+                    //como o padrao é true, nao precisa passar nada
                     this.tela.exibirMensagem()
-                    //para a execucao
+                    //para a execução
                     return;
                 }
 
